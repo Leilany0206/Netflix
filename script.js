@@ -13,32 +13,21 @@ const getMovies = async(type) => {
     })
 
     let aux = response.data.results;
+    let newMovie = [];
 
     if (response.status === 200) {
-        aux.forEach(movie => {
-            console.log(movie.title);
-        });
-    }
+        for (let i = 0; i < 15; i++) {
+            newMovie.push(aux[i].title);
+    }}
+
+    console.log(newMovie)
 
     } catch(error){
         console.log(error)
     }
 }
 
-function slideMaker(type) {
-    let movie = getMovies(type);
-
-    for (let i = 0; i < 15; i++) {
-        let newMovie = []
-        newMovie.push(movie[i]);
-
-        console.log(newMovie)
-    }
-}
-
 getMovies(popular);
-getMovies(romance);
-
 
 /* METODO CON THEN
 axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4aed3af119a1e0c2e")
@@ -48,4 +37,39 @@ axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4ae
 .catch((error) => {
     console.log(error)
 });
+*/
+
+/*
+for (let i = 0; i < 15; i++) {
+    let newMovie = []
+    newMovie.push(movie[i]);
+
+    console.log(newMovie)
+}
+
+let aux = response.data.results;
+    if (getStatus(type) === 200) {
+        for (let i = 0; i < 15; i++) {
+            let newMovie = []
+            newMovie.push(aux[i]);
+        
+            console.log(newMovie)
+    }
+
+const getStatus = async(type) => {
+    try {
+    const response = await axios.get(type, {
+        params: {
+            api_key: "e2463b079580c4d4aed3af119a1e0c2e",
+            language: "es-MX"
+        }
+    })
+
+    let aux = response.status
+    return aux;
+
+    } catch(error){
+        console.log(error)
+    }
+}
 */
