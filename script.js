@@ -4,6 +4,7 @@ let popular = "https://api.themoviedb.org/3/movie/popular"
 let romance = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10749"
 
 const getMovies = async(type) => {
+    console.time('loop')
     try {
     const response = await axios.get(type, {
         params: {
@@ -13,21 +14,31 @@ const getMovies = async(type) => {
     })
 
     let aux = response.data.results;
-    let newMovie = [];
+    const movie = new Map();
 
-    if (response.status === 200) {
+    if (response.status === 200) { 
         for (let i = 0; i < 15; i++) {
-            newMovie.push(aux[i].title);
-    }}
+            movie.set(aux[i].title, aux[i].poster_path)
+        }
+    }
 
-    console.log(newMovie)
+    console.log(movie);
 
     } catch(error){
         console.log(error)
     }
+    console.timeEnd('loop')
+}
+
+const setMovies = () => {
+    const movie = new Map();
+
+    movie.set()
 }
 
 getMovies(popular);
+
+
 
 /* METODO CON THEN
 axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4aed3af119a1e0c2e")
