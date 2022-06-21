@@ -4,7 +4,6 @@ let popular = "https://api.themoviedb.org/3/movie/popular"
 let romance = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10749"
 
 const getMovies = async(type) => {
-    console.time('loop')
     try {
     const response = await axios.get(type, {
         params: {
@@ -22,22 +21,32 @@ const getMovies = async(type) => {
         }
     }
 
-    console.log(movie);
+    return(movie);
 
     } catch(error){
         console.log(error)
     }
-    console.timeEnd('loop')
 }
 
-const setMovies = () => {
-    const movie = new Map();
-
-    movie.set()
+const setMovies = (type) => {
+    let auxMovie = "";
+    for(let [title, poster] of getMovies(`${type}`)) {
+        auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
+        console.log(title)
+        console.log("FUNCIONA EN TEORÍA")
+    }
+    let auxDoc = document.getElementById(`${type}`);
+    auxDoc.innerHTML = auxMovie
 }
 
-getMovies(popular);
+// getMovies(popular);
+// setMovies(popular);
 
+function prueba(type) {
+    console.log(getMovies(type))
+}
+
+prueba(popular)
 
 
 /* METODO CON THEN
