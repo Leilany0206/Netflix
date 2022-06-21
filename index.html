@@ -15,10 +15,10 @@
     <div id="left">
         <img src="https://1000marken.net/wp-content/uploads/2021/01/Netflix-logo.png" alt="">
         <div class="navWord"><p>Inicio</p></div>
-        <div class="navWord"><P>Series</p></div>
-        <div class="navWord"><P>Películas</p></div>
-        <div class="navWord"><P>Novedades populares</p></div>
-        <div class="navWord"><P>Mi lista</p></div>
+        <div class="navWord"><p>Series</p></div>
+        <div class="navWord"><p>Películas</p></div>
+        <div class="navWord"><p>Novedades populares</p></div>
+        <div class="navWord"><p>Mi lista</p></div>
     </div>
     <div id="right">
         <div class="navWord"><i class="bi bi-search"></i></div>
@@ -43,7 +43,18 @@
     <div class="gradient"></div>
 </header>
 <main>
-    
+    <div class="movieSlides">
+        <div class="slidesInfo"><h2>TOP 10</h2></div>
+        <div class="containerSlidesPrincipal">
+            <button role="button" class="leftArrow"><i class="bi bi-chevron-compact-left"></i></button>
+
+            <div class="carouselContainer" id="popular">
+                <!--<div class="movie"></div>-->
+            </div>
+
+            <button role="button" class="rightArrow"><i class="bi bi-chevron-compact-right"></i></button>
+        </div>
+    </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="script.js"></script>
