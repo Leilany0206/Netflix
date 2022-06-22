@@ -4,6 +4,13 @@ let romance = "https://api.themoviedb.org/3/discover/movie?api_key=af1b761095607
 let billboardContainer = document.getElementById("billboardContainer");
 let billboardTitle = document.getElementById("billboardTitle");
 let billboardDesc = document.getElementById("billboardDesc");
+let moviePage = document.getElementById("moviePage");
+let popularBox = document.getElementById("popular")
+
+// CLOSE LOGO 
+function close(box) {
+    box.style.visibility = "hidden";
+}
 
 const setBillboard = async() => {
     try {
@@ -30,8 +37,6 @@ const setBillboard = async() => {
             billboardDesc.innerHTML = auxDesc;
         }
 
-        console.log(aux)
-
     } catch(error){
         console.log(error)
     }
@@ -39,7 +44,7 @@ const setBillboard = async() => {
 
 setBillboard();
 
-const getMovies = async(type) => {
+const getMovies = async(type, box) => {
     try {
     const response = await axios.get(type, {
         params: {
@@ -49,31 +54,24 @@ const getMovies = async(type) => {
     })
 
     let aux = response.data.results;
-    let movieMap = new Map();
+    let auxMovie = "";
+    const movie = new Map();
 
     if (response.status === 200) { 
         for (let i = 0; i < 15; i++) {
-            movieMap.set(aux[i].title, aux[i].poster_path)
+            auxMovie += `<div class="movie" id=${aux[i].id}><img src="https://image.tmdb.org/t/p/w500${aux[i].backdrop_path}" class="poster" alt=""></div>`
+            box.innerHTML = auxMovie;
         }
-
-        let auxMovie = "";
-        let auxDoc = document.getElementById(`"${type}"`)
-
-        movieMap.forEach(poster => {
-            auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
-            auxDoc.innerHTML = auxMovie;
-        });
     }
 
-    console.log(movieMap)
-    return(movieMap);
+    return(movie);
 
     } catch(error){
         console.log(error)
     }
 }
 
-getMovies(popular);
+getMovies(popular, popularBox);
 
 /* METODO CON THEN
 axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4aed3af119a1e0c2e")
@@ -123,5 +121,13 @@ const getStatus = async(type) => {
         for(let [title, poster] of movieMap) {
         auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
         return title
+    }
+
+    let auxMovie = "";
+        for(let [id, title] of getMovies(`${type}`)) {
+            auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
+        }
+        let auxDoc = document.getElementById(`${type}`);
+        auxDoc.innerHTML = auxMovie
     }
 */

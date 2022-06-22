@@ -7,6 +7,11 @@ p {
     font-family: 'Hind', sans-serif;
 }
 
+h1 {
+    font-family: 'Hind', sans-serif;
+    font-weight: 900;
+}
+
 i {
     color: antiquewhite;
     padding: 10px;
@@ -82,7 +87,27 @@ i {
     background: rgb(20, 20, 20);
     background: linear-gradient(1deg, rgb(20, 20, 20) 40%, rgba(20, 20, 20, 0.837) 
 60%, rgba(20, 20, 20, 0) 90%, rgba(255, 255, 255, 0) 100%);
-} 
+}
+
+.gradientUp {
+    position: absolute;
+    top: 0%;
+    height: 25%;
+    width: 100%;
+    background: rgb(20, 20, 20);
+    background: linear-gradient(1deg, rgb(20, 20, 20) 40%, rgba(20, 20, 20, 0.837) 
+60%, rgba(20, 20, 20, 0) 90%, rgba(255, 255, 255, 0) 100%);
+}
+
+.gradientDown {
+    position: absolute;
+    bottom: 0;
+    height: 25%;
+    width: 100%;
+    background: rgb(20, 20, 20);
+    background: linear-gradient(180deg, rgb(20, 20, 20) 40%, rgba(20, 20, 20, 0.837) 
+60%, rgba(20, 20, 20, 0) 90%, rgba(255, 255, 255, 0) 100%);
+}
 
 /*NAVBAR*/
 
@@ -136,7 +161,7 @@ i {
 
 #billboard {
     position: relative;
-    /*z-index: -1;*/
+    /* z-index: -1; */
 }
 
 #billboardInfo {
@@ -158,4 +183,35 @@ main {
 
 .carouselContainer {
     height: 100%;
+}
+
+.poster {
+    height: 60px;
+}
+
+/*MOVIE PAGE*/
+
+#moviePage {
+    visibility: hidden;
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    right: 0%;
+    left: 0%;
+    background-color: #14141436;
+}
+
+#moviePageInt {
+    position: absolute;
+    top: 25%;
+    bottom: 25%;
+    right: 0%;
+    left: 0%;
+    background-color: #141414;
+}
+
+.close {
+    position: absolute;
+    height: 20%;
+    left: 10%;
 }
