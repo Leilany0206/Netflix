@@ -1,5 +1,6 @@
 body {
     margin: 0%;
+    background-color: #141414;
 }
 
 p {
@@ -138,10 +139,6 @@ i {
     /*z-index: -1;*/
 }
 
-#billboard > img {
-    width: 100%;
-}
-
 #billboardInfo {
     position: absolute;
     bottom: 35%;
@@ -149,8 +146,16 @@ i {
     width: 36%;
 }
 
+#billImg {
+    width: 100%;
+}
+
 /*MAIN*/
 
 main {
     background-color: #141414;
+}
+
+.carouselContainer {
+    height: 100%;
 }

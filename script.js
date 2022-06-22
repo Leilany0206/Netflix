@@ -1,7 +1,43 @@
-let slidePopular = document.getElementById("popular");
-
 let popular = "https://api.themoviedb.org/3/movie/popular"
 let romance = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10749"
+
+let billboardContainer = document.getElementById("billboardContainer");
+let billboardTitle = document.getElementById("billboardTitle");
+let billboardDesc = document.getElementById("billboardDesc");
+
+const setBillboard = async() => {
+    try {
+        const response = await axios.get(popular, {
+            params: {
+                api_key: "e2463b079580c4d4aed3af119a1e0c2e",
+                language: "es-MX"
+            }
+        })
+
+        let aux = response.data.results;
+        let auxImg = "";
+        let auxTitle = "";
+        let auxDesc = "";
+
+        if (response.status === 200) {
+            auxImg += `<img src="https://image.tmdb.org/t/p/original${aux[0].backdrop_path}" alt="" id="billImg">`
+            billboardContainer.innerHTML = auxImg;
+            
+            auxTitle += `${aux[0].title}`
+            billboardTitle.innerHTML = auxTitle;
+
+            auxDesc += `${aux[0].overview}`
+            billboardDesc.innerHTML = auxDesc;
+        }
+
+        console.log(aux)
+
+    } catch(error){
+        console.log(error)
+    }
+}
+
+setBillboard();
 
 const getMovies = async(type) => {
     try {
@@ -13,41 +49,31 @@ const getMovies = async(type) => {
     })
 
     let aux = response.data.results;
-    const movie = new Map();
+    let movieMap = new Map();
 
     if (response.status === 200) { 
         for (let i = 0; i < 15; i++) {
-            movie.set(aux[i].title, aux[i].poster_path)
+            movieMap.set(aux[i].title, aux[i].poster_path)
         }
+
+        let auxMovie = "";
+        let auxDoc = document.getElementById(`"${type}"`)
+
+        movieMap.forEach(poster => {
+            auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
+            auxDoc.innerHTML = auxMovie;
+        });
     }
 
-    return(movie);
+    console.log(movieMap)
+    return(movieMap);
 
     } catch(error){
         console.log(error)
     }
 }
 
-const setMovies = (type) => {
-    let auxMovie = "";
-    for(let [title, poster] of getMovies(`${type}`)) {
-        auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
-        console.log(title)
-        console.log("FUNCIONA EN TEORÍA")
-    }
-    let auxDoc = document.getElementById(`${type}`);
-    auxDoc.innerHTML = auxMovie
-}
-
-// getMovies(popular);
-// setMovies(popular);
-
-function prueba(type) {
-    console.log(getMovies(type))
-}
-
-prueba(popular)
-
+getMovies(popular);
 
 /* METODO CON THEN
 axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4aed3af119a1e0c2e")
@@ -92,4 +118,10 @@ const getStatus = async(type) => {
         console.log(error)
     }
 }
+
+
+        for(let [title, poster] of movieMap) {
+        auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
+        return title
+    }
 */
