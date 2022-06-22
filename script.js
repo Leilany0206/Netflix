@@ -5,7 +5,8 @@ let billboardContainer = document.getElementById("billboardContainer");
 let billboardTitle = document.getElementById("billboardTitle");
 let billboardDesc = document.getElementById("billboardDesc");
 let moviePage = document.getElementById("moviePage");
-let popularBox = document.getElementById("popular")
+let popularBox = document.getElementById("popular");
+let romanceBox = document.getElementById("romance");
 
 // CLOSE LOGO 
 function close(box) {
@@ -55,16 +56,13 @@ const getMovies = async(type, box) => {
 
     let aux = response.data.results;
     let auxMovie = "";
-    const movie = new Map();
 
     if (response.status === 200) { 
         for (let i = 0; i < 15; i++) {
-            auxMovie += `<div class="movie" id=${aux[i].id}><img src="https://image.tmdb.org/t/p/w500${aux[i].backdrop_path}" class="poster" alt=""></div>`
+            auxMovie += `<div class="movie" id=${aux[i].id}><img src="https://image.tmdb.org/t/p/w500${aux[i].backdrop_path}" class="poster" alt="" onclick="open"></div>`
             box.innerHTML = auxMovie;
         }
     }
-
-    return(movie);
 
     } catch(error){
         console.log(error)
@@ -72,6 +70,7 @@ const getMovies = async(type, box) => {
 }
 
 getMovies(popular, popularBox);
+getMovies(romance, romanceBox);
 
 /* METODO CON THEN
 axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4aed3af119a1e0c2e")

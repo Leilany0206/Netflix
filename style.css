@@ -181,12 +181,45 @@ main {
     background-color: #141414;
 }
 
-.carouselContainer {
-    height: 100%;
+/* CAROUSEL  */
+
+.containerSlidesPrincipal {
+    display: flex;
+    height: fit-content;
+    align-items: center;
 }
 
-.poster {
-    height: 60px;
+.leftArrow, .rightArrow {
+    position: absolute;
+	border: none;
+	background: rgba(0,0,0,0.3);
+	font-size: 40px;
+	line-height: 40px;
+    height: 280px;
+	width: fit-content;
+	color: #fff;
+	cursor: pointer;
+	z-index: 500;
+    justify-content: center;
+}
+
+.leftArrow > i, .rightArrow > i {
+    padding: 0;
+}
+
+.leftArrow {
+    left: 0;
+}
+
+.rightArrow {
+    right: 0;
+}
+
+.carouselContainer {    
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
 }
 
 /*MOVIE PAGE*/
