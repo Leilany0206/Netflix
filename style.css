@@ -12,9 +12,19 @@ h1 {
     font-weight: 900;
 }
 
+h2 {
+    font-family: 'Hind', sans-serif;
+    font-weight: 900;
+    margin-left: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: antiquewhite;
+}
+
 i {
     color: antiquewhite;
     padding: 10px;
+    font-size: large;
 }
 
 /*BOTONES*/
@@ -120,6 +130,7 @@ i {
     width: 100%;
     background-color: #141414;
     height: 68px;
+    z-index: 800;
 }
 
 #left, #right {
@@ -210,7 +221,7 @@ i {
     display: flex;
     align-items: center;
     flex-direction: column;
-}
+} 
 
 #searchPageText > h2 {
     font-family: 'Hind', sans-serif;
@@ -230,6 +241,7 @@ i {
 #billboardTitle {
     font-family: 'Hind', sans-serif;
     color: antiquewhite;
+    font-size: 2.5rem;
 }
 
 #billboardDesc {

@@ -1,6 +1,9 @@
 let popular = "https://api.themoviedb.org/3/movie/popular";
 let romance = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10749";
 let crime = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=80";
+let animation = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=16";
+let history = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=36";
+let music = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10402";
 
 let searchInput = document.getElementById("searchInput");
 let searchPage = document.getElementById("searchPage");
@@ -18,6 +21,9 @@ let actorPageMovies = document.getElementById("actorPageMovies");
 let popularBox = document.getElementById("popular");
 let romanceBox = document.getElementById("romance");
 let crimeBox = document.getElementById("crime");
+let animationBox = document.getElementById("animation");
+let historyBox = document.getElementById("history");
+let musicBox = document.getElementById("music");
 
 // Search
 function search() {
@@ -36,7 +42,7 @@ function search() {
 
       let aux = response.data.results;
       let auxMessage = "";
-      console.log("exo", aux)
+      console.log(aux)
 
       if (response.status === 200) {
         if (aux.length === 0) {
@@ -76,10 +82,10 @@ function actor(id) {
 
       let aux = response.data.cast;
       let auxMovie = "";
-      console.log("itzy", aux.length)
+      console.log(aux.length)
 
       if (response.status === 200) {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 5 && i < aux.length; i++) {
           auxMovie += `<div class="movieActor" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].poster_path}" class="posterActor" alt=""></div>`;
           actorPageMovies.innerHTML = auxMovie;
         }
@@ -232,6 +238,9 @@ const getMovies = async (type, box) => {
 getMovies(popular, popularBox);
 getMovies(romance, romanceBox);
 getMovies(crime, crimeBox);
+getMovies(animation, animationBox);
+getMovies(history, historyBox);
+getMovies(music, musicBox);
 
 /* METODO CON THEN
 axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4aed3af119a1e0c2e")
@@ -241,53 +250,4 @@ axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4ae
 .catch((error) => {
     console.log(error)
 });
-*/
-
-/*
-for (let i = 0; i < 15; i++) {
-    let newMovie = []
-    newMovie.push(movie[i]);
-
-    console.log(newMovie)
-}
-
-let aux = response.data.results;
-    if (getStatus(type) === 200) {
-        for (let i = 0; i < 15; i++) {
-            let newMovie = []
-            newMovie.push(aux[i]);
-        
-            console.log(newMovie)
-    }
-
-const getStatus = async(type) => {
-    try {
-    const response = await axios.get(type, {
-        params: {
-            api_key: "e2463b079580c4d4aed3af119a1e0c2e",
-            language: "es-MX"
-        }
-    })
-
-    let aux = response.status
-    return aux;
-
-    } catch(error){
-        console.log(error)
-    }
-}
-
-
-        for(let [title, poster] of movieMap) {
-        auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
-        return title
-    }
-
-    let auxMovie = "";
-        for(let [id, title] of getMovies(`${type}`)) {
-            auxMovie += `<div class="movie"><img src="https://image.tmdb.org/t/p/w500${poster}" class="poster" alt=""></div>`
-        }
-        let auxDoc = document.getElementById(`${type}`);
-        auxDoc.innerHTML = auxMovie
-    }
 */

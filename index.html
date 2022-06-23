@@ -16,7 +16,7 @@
     <title>Netflix</title>
   </head>
   <body>
-    <!--Navigation Bar-->
+<!--NAV BAR-->
     <div id="navbaritems">
       <div id="left">
         <img
@@ -43,6 +43,7 @@
 
       </div>
     </div>
+<!--BILLBOARD  -->
     <header id="billboard">
       <div id="billboardContainer"></div>
       <div id="billboardInfo">
@@ -62,10 +63,10 @@
       <div class="gradient"></div>
     </header>
     <main>
-      <!-- Peliculas con JS -->
+<!-- Peliculas con JS -->
       <div class="movieSlides">
         <!-- TRENDING -->
-        <div class="slidesInfo"><h2>TRENDING</h2></div>
+        <div class="slidesInfo"><h2>Populares</h2></div>
         <div class="containerSlidesPrincipal">
           <button role="button" class="leftArrow" onclick="moveArrowLeft(C0)">
             <i class="bi bi-chevron-compact-left"></i>
@@ -78,7 +79,7 @@
           </button>
         </div>
         <!-- ROMANCE -->
-        <div class="slidesInfo"><h2>ROMANCE</h2></div>
+        <div class="slidesInfo"><h2>Romance</h2></div>
         <div class="containerSlidesPrincipal">
           <button role="button" class="leftArrow" onclick="moveArrowLeft(C1)">
             <i class="bi bi-chevron-compact-left"></i>
@@ -91,7 +92,7 @@
           </button>
         </div>
         <!-- CRIME -->
-        <div class="slidesInfo"><h2>CRIMEN</h2></div>
+        <div class="slidesInfo"><h2>Crimen</h2></div>
         <div class="containerSlidesPrincipal">
           <button role="button" class="leftArrow" onclick="moveArrowLeft(C2)">
             <i class="bi bi-chevron-compact-left"></i>
@@ -100,6 +101,45 @@
             <div class="carousel" id="crime"></div>
           </div>
           <button role="button" class="rightArrow" onclick="moveArrowRight(C2)">
+            <i class="bi bi-chevron-compact-right"></i>
+          </button>
+        </div>
+        <!-- ANIMATION -->
+        <div class="slidesInfo"><h2>Animación</h2></div>
+        <div class="containerSlidesPrincipal">
+          <button role="button" class="leftArrow" onclick="moveArrowLeft(C3)">
+            <i class="bi bi-chevron-compact-left"></i>
+          </button>
+          <div class="carouselContainer" id="C3">
+            <div class="carousel" id="animation"></div>
+          </div>
+          <button role="button" class="rightArrow" onclick="moveArrowRight(C3)">
+            <i class="bi bi-chevron-compact-right"></i>
+          </button>
+        </div>
+        <!-- HISTORY -->
+        <div class="slidesInfo"><h2>Histórico</h2></div>
+        <div class="containerSlidesPrincipal">
+          <button role="button" class="leftArrow" onclick="moveArrowLeft(C4)">
+            <i class="bi bi-chevron-compact-left"></i>
+          </button>
+          <div class="carouselContainer" id="C4">
+            <div class="carousel" id="history"></div>
+          </div>
+          <button role="button" class="rightArrow" onclick="moveArrowRight(C4)">
+            <i class="bi bi-chevron-compact-right"></i>
+          </button>
+        </div>
+        <!-- MUSIC -->
+        <div class="slidesInfo"><h2>Musicales</h2></div>
+        <div class="containerSlidesPrincipal">
+          <button role="button" class="leftArrow" onclick="moveArrowLeft(C5)">
+            <i class="bi bi-chevron-compact-left"></i>
+          </button>
+          <div class="carouselContainer" id="C5">
+            <div class="carousel" id="music"></div>
+          </div>
+          <button role="button" class="rightArrow" onclick="moveArrowRight(C5)">
             <i class="bi bi-chevron-compact-right"></i>
           </button>
         </div>
