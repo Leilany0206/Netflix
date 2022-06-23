@@ -2,6 +2,10 @@ let popular = "https://api.themoviedb.org/3/movie/popular";
 let romance = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10749";
 let crime = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=80";
 
+let searchInput = document.getElementById("searchInput");
+let searchPage = document.getElementById("searchPage");
+let searchPageInt = document.getElementById("searchPageInt");
+let searchPageText = document.getElementById("searchPageText");
 let billboardContainer = document.getElementById("billboardContainer");
 let billboardTitle = document.getElementById("billboardTitle");
 let billboardDesc = document.getElementById("billboardDesc");
@@ -14,6 +18,41 @@ let actorPageMovies = document.getElementById("actorPageMovies");
 let popularBox = document.getElementById("popular");
 let romanceBox = document.getElementById("romance");
 let crimeBox = document.getElementById("crime");
+
+// Search
+function search() {
+  let inputOriginal = searchInput.value
+  let input = "&query=" + inputOriginal
+  let searchLink = `https://api.themoviedb.org/3/search/movie?api_key=af1b76109560756a2450b61eff16e738${input}`
+  searchPage.style.visibility = "visible";
+
+  const searchMovie = async () => {
+    try {
+      const response = await axios.get(searchLink, {
+        params: {
+          language: "es-MX",
+        },
+      });
+
+      let aux = response.data.results;
+      let auxMessage = "";
+      console.log("exo", aux)
+
+      if (response.status === 200) {
+        if (aux.length === 0) {
+          auxMessage += `<h2>Lo sentimos, parece que "${inputOriginal}" no forma parte del catálogo en este momento</h2>`
+          searchPageText.innerHTML = auxMessage;
+        } else {
+          auxMessage += `<h2>"${inputOriginal}" forma parte del catálogo en este momento :)</h2>`
+          searchPageText.innerHTML = auxMessage;
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  searchMovie();
+}
 
 // EVENT CLOSE LOGO
 function closeWindow(box) {
@@ -134,6 +173,7 @@ function showMovie(id) {
   getSetCast();
 }
 
+// BILLBOARD
 const setBillboard = async () => {
   try {
     const response = await axios.get(popular, {
@@ -165,6 +205,7 @@ const setBillboard = async () => {
 
 setBillboard();
 
+// CAROUSEL MOVIES
 const getMovies = async (type, box) => {
   try {
     const response = await axios.get(type, {

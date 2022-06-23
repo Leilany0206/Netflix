@@ -30,12 +30,17 @@
         <div class="navWord"><p>Mi lista</p></div>
       </div>
       <div id="right">
-        <div class="navWord"><i class="bi bi-search"></i></div>
+
+        <div class="navWordSearch">
+          <input id="searchInput" type="text" autocomplete="off">
+          <i class="bi bi-search" onclick="search()"></i>
+        </div>
         <div class="navWord"><i class="bi bi-bell-fill"></i></div>
         <img
           src="https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png"
           alt=""
         />
+
       </div>
     </div>
     <header id="billboard">
@@ -136,6 +141,23 @@
           <div id="actorPageMovies"></div>
         <!-- </div> -->
       </div>
+    <div class="gradientDown"></div>
+  </div>
+<!-- SEARCH PAGE -->
+  <div id="searchPage">
+    <div class="gradientUp"></div>
+    <div id="searchPageBackground">
+    <div id="searchPageInt">
+      <div class="close" onclick="closeWindow(searchPage)">
+        <img
+          src="https://1000marken.net/wp-content/uploads/2021/01/Netflix-logo.png"
+          alt=""
+          class="closeImg"
+        />
+      <div id="searchPageText"></div>
+      </div>
+    </div>
+    </div>
     <div class="gradientDown"></div>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
