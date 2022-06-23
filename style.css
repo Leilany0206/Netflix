@@ -161,7 +161,16 @@ i {
 
 #billboard {
     position: relative;
-    /* z-index: -1; */
+    z-index: -1;
+}
+
+#billboardTitle {
+    font-family: 'Hind', sans-serif;
+    color: antiquewhite;
+}
+
+#billboardDesc {
+    color: antiquewhite;
 }
 
 #billboardInfo {
@@ -303,4 +312,16 @@ rgba(20,20,20,0.4489146000196954) 93%, rgba(20,20,20,0) 100%);
     position: absolute;
     right: 0;
     width: 60%;
+}
+
+/* ACTOR PAGE */
+
+#actorPage{
+    visibility: hidden;
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    right: 0%;
+    left: 0%;
+    background-color: #14141436;
 }

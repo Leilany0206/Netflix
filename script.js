@@ -9,6 +9,7 @@ let moviePageTitle = document.getElementById("moviePageTitle");
 let moviePageDesc = document.getElementById("moviePageDesc");
 let moviePageInt = document.getElementById("moviePageInt");
 let moviePageActor = document.getElementById("moviePageActor");
+let actorPageMovies = document.getElementById("actorPageMovies");
 let popularBox = document.getElementById("popular");
 let romanceBox = document.getElementById("romance");
 
@@ -16,6 +17,37 @@ let romanceBox = document.getElementById("romance");
 function close(box) {
     box.style.visibility = "hidden";
 }
+
+// EVENT ACTOR MOVIES
+function actor(id) {
+
+    let actorMovies = `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=e2463b079580c4d4aed3af119a1e0c2e`
+
+    const getSetActor = async() => {
+        try {
+        const response = await axios.get(actorMovies, {
+            params: {
+                language: "es-MX"
+            }
+        })
+    
+        let aux = response.data.cast;
+        let auxMovie = "";
+    
+        if (response.status === 200) { 
+            for (let i = 0; i < 5; i++) {
+            auxMovie += `<div class="movieActor" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].poster_path}" class="posterActor" alt="" onclick="open"></div>`
+            actorPageMovies.innerHTML = auxMovie;
+        }}
+    
+        } catch(error){
+            console.log(error)
+        }
+    }
+    getSetActor();
+}
+
+actor(4958);
 
 // EVENT CLICK MOVIE SHOW
 function showMovie(id){
@@ -46,8 +78,6 @@ function showMovie(id){
 
             auxImg += `<div id="moviePageImg"><img src="https://image.tmdb.org/t/p/w1280${aux.backdrop_path}"></div>`
             moviePageInt.innerHTML += auxImg;
-
-
         }
     
         } catch(error){
@@ -55,7 +85,37 @@ function showMovie(id){
         }
     }
 
+    let cast = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=e2463b079580c4d4aed3af119a1e0c2e&language=en-US`
+
+    const getSetCast = async() => {
+        try {
+            const response = await axios.get(cast, {
+                params: {
+                    language: "es-MX"
+                }
+            })
+
+            let aux = response.data.cast;
+            let auxActor = "";
+            console.log(aux)
+
+            if (response.status === 200) { 
+                for (let i = 0; i < 5; i++) {
+                auxActor += `<span class="castMember" onclick="actor(${aux[i].id})">${aux[i].name}</span>`
+                moviePageActor.innerHTML = auxActor;
+                }
+            }
+
+            // let auxActorFinal = `<span>más...</span>`;
+            // moviePageActor.innerHTML = auxActorFinal;
+        
+            } catch(error){
+                console.log(error)
+            }
+        }
+
     getSet();
+    getSetCast();
 }
 
 const setBillboard = async() => {
