@@ -1,6 +1,6 @@
 let popular = "https://api.themoviedb.org/3/movie/popular";
-let romance =
-  "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10749";
+let romance = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10749";
+let crime = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=80";
 
 let billboardContainer = document.getElementById("billboardContainer");
 let billboardTitle = document.getElementById("billboardTitle");
@@ -13,6 +13,7 @@ let moviePageActor = document.getElementById("moviePageActor");
 let actorPageMovies = document.getElementById("actorPageMovies");
 let popularBox = document.getElementById("popular");
 let romanceBox = document.getElementById("romance");
+let crimeBox = document.getElementById("crime");
 
 // EVENT CLOSE LOGO
 function closeWindow(box) {
@@ -23,6 +24,8 @@ function closeWindow(box) {
 // EVENT ACTOR MOVIES
 function actor(id) {
   let actorMovies = `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=e2463b079580c4d4aed3af119a1e0c2e`;
+  actorPage.style.visibility = "visible";
+  moviePage.style.visibility = "hidden";
 
   const getSetActor = async () => {
     try {
@@ -34,10 +37,11 @@ function actor(id) {
 
       let aux = response.data.cast;
       let auxMovie = "";
+      console.log("itzy", aux.length)
 
       if (response.status === 200) {
         for (let i = 0; i < 5; i++) {
-          auxMovie += `<div class="movieActor" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].poster_path}" class="posterActor" alt="" onclick="open"></div>`;
+          auxMovie += `<div class="movieActor" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].poster_path}" class="posterActor" alt=""></div>`;
           actorPageMovies.innerHTML = auxMovie;
         }
       }
@@ -48,16 +52,12 @@ function actor(id) {
   getSetActor();
 }
 
-actor(4958);
-
 //EVENT MOVE ARROW
 function moveArrowRight(cNumber) {
-  // let carouselContainer = document.getElementById(`${cNumber}`);
-
   cNumber.scrollLeft += cNumber.offsetWidth;
 }
 
-function moveArrowLeft() {
+function moveArrowLeft(cNumber) {
   cNumber.scrollLeft -= cNumber.offsetWidth;
 }
 
@@ -88,8 +88,12 @@ function showMovie(id) {
         auxDesc += `${aux.overview}`;
         moviePageDesc.innerHTML = auxDesc;
 
-        auxImg += `<div id="moviePageImg"><img src="https://image.tmdb.org/t/p/w1280${aux.backdrop_path}"></div>`;
-        moviePageInt.innerHTML += auxImg;
+        // auxImg += `<div id="moviePageImg">AHHHHHH</div>`;
+        // let moviePageImg = document.getElementById("moviePageImg");
+        // moviePageImg.style.backgroundImage=`"url(https://image.tmdb.org/t/p/w1280${aux.backdrop_path})"`;
+        // moviePageInt.innerHTML = auxImg;
+
+        moviePageInt.style.backgroundImage=`url(https://image.tmdb.org/t/p/w1280${aux.backdrop_path})`;
       }
     } catch (error) {
       console.log(error);
@@ -114,12 +118,12 @@ function showMovie(id) {
         for (let i = 0; i < 5; i++) {
           auxActor += `<span class="castMember" onclick="actor(${aux[i].id})">${aux[i].name}, </span>`;
         }
+        let auxActorFinal = `<span>más...</span>`;
+
         console.log(auxActor)
-        moviePageActor.innerHTML = auxActor;
+        moviePageActor.innerHTML = auxActor + auxActorFinal;
       }
 
-      // let auxActorFinal = `<span>más...</span>`;
-      // moviePageActor.innerHTML = auxActorFinal;
     } catch (error) {
       console.log(error);
     }
@@ -174,7 +178,7 @@ const getMovies = async (type, box) => {
 
     if (response.status === 200) {
       for (let i = 0; i < 15; i++) {
-        auxMovie += `<div class="movie" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].backdrop_path}" class="poster" alt="" onclick="open"></div>`;
+        auxMovie += `<div class="movie" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].backdrop_path}" class="poster" alt=""></div>`;
         box.innerHTML = auxMovie;
       }
     }
@@ -185,6 +189,7 @@ const getMovies = async (type, box) => {
 
 getMovies(popular, popularBox);
 getMovies(romance, romanceBox);
+getMovies(crime, crimeBox);
 
 /* METODO CON THEN
 axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e2463b079580c4d4aed3af119a1e0c2e")

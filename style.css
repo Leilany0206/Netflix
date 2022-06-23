@@ -211,7 +211,7 @@ main {
 	color: #fff;
 	cursor: pointer;
     padding: 20px, 0;
-    z-index: 600;
+    z-index: 1;
 }
 
 .leftArrow > i, .rightArrow > i {
@@ -263,6 +263,16 @@ main {
     right: 0%;
     left: 0%;
     background-color: #14141436;
+    z-index: 10;
+}
+
+#moviePageBackgroundColor {
+    background-color: #141414;
+    position: absolute;
+    top: 25%;
+    bottom: 25%;
+    right: 0%;
+    left: 0%;
 }
 
 #moviePageInt {
@@ -271,7 +281,10 @@ main {
     bottom: 25%;
     right: 0%;
     left: 0%;
-    background-color: #141414;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: right;
+    background-size: 60%;
 }
 
 .close {
@@ -294,9 +307,8 @@ main {
     height: 100%;
     width: 50%;
     z-index: 10;
-    background: rgb(20,20,20);
-background: linear-gradient(90deg, rgba(20,20,20,1) 58%, rgba(20,20,20,0.9363095580028886) 67%, rgba(20,20,20,0.7598389697675946) 82%, 
-rgba(20,20,20,0.4489146000196954) 93%, rgba(20,20,20,0) 100%);
+    background: linear-gradient(90deg, rgba(20,20,20,1) 70%, rgba(20,20,20,0.9363095580028886) 75%, rgba(20,20,20,0.7598389697675946) 85%, 
+    rgba(20,20,20,0.4489146000196954) 95%, rgba(20,20,20,0) 100%);
 }
 
 #moviePageIntInfo > * {
@@ -311,11 +323,11 @@ rgba(20,20,20,0.4489146000196954) 93%, rgba(20,20,20,0) 100%);
     width: 90%;
 }
 
-#moviePageImg > img {
+/* #moviePageImg > img {
     position: absolute;
     right: 0;
     width: 60%;
-}
+} */
 
 /* ACTOR PAGE */
 
@@ -327,4 +339,53 @@ rgba(20,20,20,0.4489146000196954) 93%, rgba(20,20,20,0) 100%);
     right: 0%;
     left: 0%;
     background-color: #14141436;
+    z-index: 10;
+}
+
+#actorPage > .gradientDown {
+    height: 15%;
+}
+
+.castMember:hover {
+    color: #E50914;
+}
+
+#actorPageInt {
+    display: block;
+    position: absolute;
+    top: 25%;
+    bottom: 15%;
+    right: 0%;
+    left: 0%;
+    background-color: #141414;
+}
+
+/* #apmContainer {
+    padding: 0, 5%, 0, 5%;
+} */
+
+#actorPageMovies {
+    display: flex;
+    padding: 2rem;
+    height: 100%;
+}
+
+.movieActor {
+    width: 20%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0.625rem;
+}
+
+.posterActor {
+    width: 100%;
+    object-fit: cover;
+}
+
+.movieActor:hover {
+    transform: scale(1.2);
+	transform-origin: center;
+    filter: drop-shadow(0 0 10px #000000e9);
+    z-index: 1;
 }
