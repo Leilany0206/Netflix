@@ -49,25 +49,31 @@
         <div class="slidesInfo"><h2>TRENDING</h2></div>
         <div class="containerSlidesPrincipal">
             <button role="button" class="leftArrow"><i class="bi bi-chevron-compact-left"></i></button>
-                <div class="carouselContainer" id="popular"></div> 
+            <div class="carouselContainer">
+                <div class="carousel" id="popular"></div>
+            </div>
             <button role="button" class="rightArrow"><i class="bi bi-chevron-compact-right"></i></button>
         </div>
         <!-- ROMANCE -->
         <div class="slidesInfo"><h2>ROMANCE</h2></div>
         <div class="containerSlidesPrincipal">
             <button role="button" class="leftArrow"><i class="bi bi-chevron-compact-left"></i></button>
-                <div class="carouselContainer" id="romance"></div>
-            <button role="button" class="rightArrow"><i class="bi bi-chevron-compact-right"></i></button>
+            <div class="carouselContainer">
+                <div class="carousel" id="romance"></div>
+            </div>
+            <button role="button" class="rightArrow"><i class="bi bi-chevron-compact-right"></i></button>    
         </div>
     </div>
 </main>
 <div id="moviePage">
     <div class="gradientUp"></div>
     <div id="moviePageInt">
-        <img src="https://1000marken.net/wp-content/uploads/2021/01/Netflix-logo.png" alt="" onclick="close(moviePage)" class="close">
+        <div id="moviePageIntInfo">
+        <div class="close"><img src="https://1000marken.net/wp-content/uploads/2021/01/Netflix-logo.png" alt="" onclick="close(moviePage)" class="closeImg"></div>
         <h1 id="moviePageTitle"></h1>
         <p id="moviePageDesc"></p>
         <p id="moviePageActor"></p>
+        </div>
     </div>
     <div class="gradientDown"></div>
 </div>

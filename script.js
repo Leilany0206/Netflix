@@ -5,12 +5,57 @@ let billboardContainer = document.getElementById("billboardContainer");
 let billboardTitle = document.getElementById("billboardTitle");
 let billboardDesc = document.getElementById("billboardDesc");
 let moviePage = document.getElementById("moviePage");
+let moviePageTitle = document.getElementById("moviePageTitle");
+let moviePageDesc = document.getElementById("moviePageDesc");
+let moviePageInt = document.getElementById("moviePageInt");
+let moviePageActor = document.getElementById("moviePageActor");
 let popularBox = document.getElementById("popular");
 let romanceBox = document.getElementById("romance");
 
-// CLOSE LOGO 
+// EVENT CLOSE LOGO 
 function close(box) {
     box.style.visibility = "hidden";
+}
+
+// EVENT CLICK MOVIE SHOW
+function showMovie(id){
+    moviePage.style.visibility = "visible";
+
+    let show = `https://api.themoviedb.org/3/movie/${id}?api_key=e2463b079580c4d4aed3af119a1e0c2e`
+
+    const getSet = async() => {
+        try {
+        const response = await axios.get(show, {
+            params: {
+                language: "es-MX"
+            }
+        })
+    
+        let aux = response.data;
+        let auxTitle = "";
+        let auxDesc = "";
+        let auxImg = "";
+        console.log(aux.title)
+    
+        if (response.status === 200) { 
+            auxTitle += `${aux.title}`
+            moviePageTitle.innerHTML = auxTitle;
+
+            auxDesc += `${aux.overview}`
+            moviePageDesc.innerHTML = auxDesc;
+
+            auxImg += `<div id="moviePageImg"><img src="https://image.tmdb.org/t/p/w1280${aux.backdrop_path}"></div>`
+            moviePageInt.innerHTML += auxImg;
+
+
+        }
+    
+        } catch(error){
+            console.log(error)
+        }
+    }
+
+    getSet();
 }
 
 const setBillboard = async() => {
@@ -59,7 +104,7 @@ const getMovies = async(type, box) => {
 
     if (response.status === 200) { 
         for (let i = 0; i < 15; i++) {
-            auxMovie += `<div class="movie" id=${aux[i].id}><img src="https://image.tmdb.org/t/p/w500${aux[i].backdrop_path}" class="poster" alt="" onclick="open"></div>`
+            auxMovie += `<div class="movie" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].backdrop_path}" class="poster" alt="" onclick="open"></div>`
             box.innerHTML = auxMovie;
         }
     }
