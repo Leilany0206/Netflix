@@ -346,6 +346,10 @@ main {
     height: 15%;
 }
 
+#actorPage > .gradientUp {
+    height: 15%;
+}
+
 .castMember:hover {
     color: #E50914;
 }
@@ -353,11 +357,15 @@ main {
 #actorPageInt {
     display: block;
     position: absolute;
-    top: 25%;
+    top: 15%;
     bottom: 15%;
     right: 0%;
     left: 0%;
     background-color: #141414;
+}
+
+#actorPageInt > .close {
+    margin-left: 5%;
 }
 
 /* #apmContainer {
@@ -367,7 +375,6 @@ main {
 #actorPageMovies {
     display: flex;
     padding: 2rem;
-    height: 100%;
 }
 
 .movieActor {

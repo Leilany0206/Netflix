@@ -64,6 +64,7 @@ function moveArrowLeft(cNumber) {
 // EVENT CLICK MOVIE SHOW
 function showMovie(id) {
   moviePage.style.visibility = "visible";
+  actorPage.style.visibility = "hidden";
 
   let show = `https://api.themoviedb.org/3/movie/${id}?api_key=e2463b079580c4d4aed3af119a1e0c2e`;
 
