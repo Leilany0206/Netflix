@@ -5,6 +5,7 @@ let romance =
 let billboardContainer = document.getElementById("billboardContainer");
 let billboardTitle = document.getElementById("billboardTitle");
 let billboardDesc = document.getElementById("billboardDesc");
+let carouselContainer = document.querySelector(".carouselContainer");
 let moviePage = document.getElementById("moviePage");
 let moviePageTitle = document.getElementById("moviePageTitle");
 let moviePageDesc = document.getElementById("moviePageDesc");
@@ -49,6 +50,15 @@ function actor(id) {
 }
 
 actor(4958);
+
+//EVENT MOVE ARROW
+function moveArrowRight() {
+    carouselContainer.scrollLeft += carouselContainer.offsetWidth;
+}
+
+function moveArrowLeft() {
+    carouselContainer.scrollLeft -= carouselContainer.offsetWidth;
+}
 
 // EVENT CLICK MOVIE SHOW
 function showMovie(id) {
@@ -114,7 +124,7 @@ function showMovie(id) {
     }
   };
 
-  getSet();
+  getSet(); 
   getSetCast();
 }
 

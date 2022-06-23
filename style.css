@@ -211,6 +211,7 @@ main {
 	color: #fff;
 	cursor: pointer;
     padding: 20px, 0;
+    z-index: 600;
 }
 
 .leftArrow > i, .rightArrow > i {
@@ -244,10 +245,12 @@ main {
 .movie:hover {
     transform: scale(1.2);
 	transform-origin: center;
+    filter: drop-shadow(0 0 10px #000000e9);
 }
 
 .poster {
     width: 100%;
+    vertical-align: top;
 }
 
 /*MOVIE PAGE*/
