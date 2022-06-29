@@ -190,13 +190,11 @@ const setBillboard = async () => {
     });
 
     let aux = response.data.results;
-    let auxImg = "";
     let auxTitle = "";
     let auxDesc = "";
 
     if (response.status === 200) {
-      auxImg += `<img src="https://image.tmdb.org/t/p/original${aux[0].backdrop_path}" alt="" id="billImg">`;
-      billboardContainer.innerHTML = auxImg;
+      billboardContainer.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${aux[0].backdrop_path})`;
 
       auxTitle += `${aux[0].title}`;
       billboardTitle.innerHTML = auxTitle;
