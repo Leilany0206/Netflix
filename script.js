@@ -5,6 +5,7 @@ let animation = "https://api.themoviedb.org/3/discover/movie?api_key=af1b7610956
 let history = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=36";
 let music = "https://api.themoviedb.org/3/discover/movie?api_key=af1b76109560756a2450b61eff16e738&with_genres=10402";
 
+let changeLogo = document.getElementById("changeLogo");
 let searchInput = document.getElementById("searchInput");
 let searchPage = document.getElementById("searchPage");
 let searchPageInt = document.getElementById("searchPageInt");
@@ -12,6 +13,7 @@ let searchPageText = document.getElementById("searchPageText");
 let billboardContainer = document.getElementById("billboardContainer");
 let billboardTitle = document.getElementById("billboardTitle");
 let billboardDesc = document.getElementById("billboardDesc");
+let infoBtn = document.getElementById("infoBtn");
 let moviePage = document.getElementById("moviePage");
 let moviePageTitle = document.getElementById("moviePageTitle");
 let moviePageDesc = document.getElementById("moviePageDesc");
@@ -25,7 +27,27 @@ let animationBox = document.getElementById("animation");
 let historyBox = document.getElementById("history");
 let musicBox = document.getElementById("music");
 
+// NETFLIX ICON MEDIA QUERIES
+function mediaLogo(x) {
+  if (x.matches) { 
+    changeLogo.src = "https://www.edigitalagency.com.au/wp-content/uploads/Netflix-N-Symbol-logo-red-transparent-RGB-png.png";
+  } else {
+    changeLogo.src = "https://1000marken.net/wp-content/uploads/2021/01/Netflix-logo.png"
+  }
+}
+
+var x = window.matchMedia("(max-width: 576px)")
+mediaLogo(x) 
+x.addListener(mediaLogo);
+
 // Search
+
+searchInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    search()
+  }
+});
+
 function search() {
   let inputOriginal = searchInput.value
   let input = "&query=" + inputOriginal
@@ -86,8 +108,10 @@ function actor(id) {
 
       if (response.status === 200) {
         for (let i = 0; i < 5 && i < aux.length; i++) {
+          if(aux[i].poster_path !== null) {
           auxMovie += `<div class="movieActor" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].poster_path}" class="posterActor" alt=""></div>`;
           actorPageMovies.innerHTML = auxMovie;
+          }
         }
       }
     } catch (error) {
@@ -124,7 +148,6 @@ function showMovie(id) {
       let aux = response.data;
       let auxTitle = "";
       let auxDesc = "";
-      let auxImg = "";
       console.log(aux.title);
 
       if (response.status === 200) {
@@ -139,7 +162,12 @@ function showMovie(id) {
         // moviePageImg.style.backgroundImage=`"url(https://image.tmdb.org/t/p/w1280${aux.backdrop_path})"`;
         // moviePageInt.innerHTML = auxImg;
 
-        moviePageInt.style.backgroundImage=`url(https://image.tmdb.org/t/p/w1280${aux.backdrop_path})`;
+        if(aux.backdrop_path !== null) {
+          moviePageInt.style.backgroundImage=`url(https://image.tmdb.org/t/p/w1280${aux.backdrop_path})`;
+        } else {
+          moviePageInt.style.backgroundImage=`url(https://image.tmdb.org/t/p/w1280${aux.poster_path})`;
+          moviePageInt.style.backgroundPositionY = "center";
+        }
       }
     } catch (error) {
       console.log(error);
@@ -162,7 +190,9 @@ function showMovie(id) {
 
       if (response.status === 200) {
         for (let i = 0; i < 5; i++) {
-          auxActor += `<span class="castMember" onclick="actor(${aux[i].id})">${aux[i].name}, </span>`;
+          if (aux[i].known_for_department == "Acting") {
+            auxActor += `<span class="castMember" onclick="actor(${aux[i].id})">${aux[i].name}, </span>`;
+          }
         }
         let auxActorFinal = `<span>más...</span>`;
 
@@ -194,6 +224,8 @@ const setBillboard = async () => {
     let auxDesc = "";
 
     if (response.status === 200) {
+      infoBtn.setAttribute("onclick", `showMovie(${aux[0].id})`);
+
       billboardContainer.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${aux[0].backdrop_path})`;
 
       auxTitle += `${aux[0].title}`;

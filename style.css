@@ -4,7 +4,6 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.5fr 1fr;
-    gap: 5px 10px;
     grid-auto-flow: row dense;
     grid-template-areas:
         "header"
@@ -55,21 +54,24 @@ i {
 }
 
 .playBtn > i {
+    font-size: 1.5rem;
     color: #141414;
-    height: 100%;
     padding-left: 0px;
     padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .playBtn > p {
     margin: 0px;
+    font-size: 0.85rem;
 }
 
 .playBtn:hover {
     background-color: rgba(250, 235, 215, 0.627);
 }
 
-.infoBtn {
+#infoBtn {
     background-color: #4b4b4b89;
     display: flex;
     border: none;
@@ -80,19 +82,22 @@ i {
     margin-right: 1rem;
 }
 
-.infoBtn > i {
+#infoBtn > i {
+    font-size: 1.5rem;
     color: antiquewhite;
-    height: 100%;
     padding-left: 0px;
     padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
-.infoBtn > p {
+#infoBtn > p {
     color: antiquewhite;
     margin: 0px;
+    font-size: 0.85rem;
 }
 
-.infoBtn:hover {
+#infoBtn:hover {
     background-color: #2d2d2d86;
 }
 
@@ -100,6 +105,7 @@ i {
 
 .gradient {
     position: absolute;
+    left: 0px;
     bottom: 0;
     height: 20%;
     width: 100%;
@@ -110,6 +116,7 @@ i {
 
 .gradientUp {
     position: absolute;
+    left: 0;
     top: 0%;
     height: 25%;
     width: 100%;
@@ -120,6 +127,7 @@ i {
 
 .gradientDown {
     position: absolute;
+    left: 0;
     bottom: 0;
     height: 25%;
     width: 100%;
@@ -136,7 +144,7 @@ i {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
     background-color: #141414;
     height: 68px;
     z-index: 800;
@@ -199,6 +207,7 @@ i {
     bottom: 0%;
     right: 0%;
     left: 0%;
+    width: 100vw;
     background-color: #14141436;
     z-index: 10;
 }
@@ -244,7 +253,7 @@ i {
 
 #billboard {
     position: relative;
-    z-index: -1;
+    /* z-index: -1; */
     grid-area: header;
 }
 
@@ -256,18 +265,16 @@ i {
 
 #billboardDesc {
     color: antiquewhite;
+    margin-top: 0px;
 }
 
 #billboardInfo {
     position: absolute;
+    left: 0;
     bottom: 35%;
-    padding-left: 4%;
-    padding-right: 4%;
+    left: 4%;
+    right: 4%;
     width: 36%;
-}
-
-#billImg {
-    width: 100%;
 }
 
 #billboardContainer {
@@ -322,7 +329,8 @@ main {
 
 .carouselContainer {    
     width: 100%;
-	padding: 20px 0;
+	padding-top: 20px;
+    padding-bottom: 20px;
 	overflow: hidden;
 	scroll-behavior: smooth;
 }
@@ -356,6 +364,7 @@ main {
     bottom: 0%;
     right: 0%;
     left: 0%;
+    width: 100vw;
     background-color: #14141436;
     z-index: 10;
 }
@@ -512,4 +521,42 @@ main {
     #left > .navWord {
         display: none;
     }
+    .movie {
+        min-width: 25%;
+    }
 }
+
+@media only screen and (max-width: 768px) {
+    #billboardDesc {
+        font-size: 0.9rem;
+    } 
+    #billboardTitle {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    body {
+        grid-template-rows: 45% 1fr;
+    }
+    #right > .navWord, .navWordSearch > i {
+        display: none;
+    }
+    .movie {
+        min-width: 50%;
+    }
+    #billboardInfo {
+        bottom: 5%;
+        z-index: 10;
+    }
+    .gradient {
+        height: 40%;
+        background: linear-gradient(1deg, rgb(20, 20, 20) 40%, rgba(20, 20, 20, 0.837) 
+        60%, rgb(20 20 20 / 45%) 90%, rgba(255, 255, 255, 0) 100%);
+    }
+    #billboardDesc {
+        font-size: 0.8rem;
+    } 
+}
+
+/* NO SUPE QUE PASO PERO EL CAROUSEL DE ACTORPAGE CAMBIO DE TAMAÑO */
