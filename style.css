@@ -79,7 +79,6 @@ i {
     border-radius: 5px;
     padding-left: 2rem;
     padding-right: 2rem;
-    margin-right: 1rem;
 }
 
 #infoBtn > i {
@@ -533,11 +532,37 @@ main {
     #billboardTitle {
         font-size: 2rem;
     }
+    .playBtn > i {
+        font-size: 1.5rem;
+        padding-right: 10px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+    .playBtn {
+        font-size: 1.5rem;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-top: 3px;
+    }
+    #infoBtn > i {
+        font-size: 1.5rem;
+        padding-right: 10px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+    #infoBtn {
+        font-size: 1.5rem;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-top: 3px;
+    }
 }
 
 @media only screen and (max-width: 576px) {
     body {
-        grid-template-rows: 45% 1fr;
+        grid-template-rows: 0.5fr 1fr;
     }
     #right > .navWord, .navWordSearch > i {
         display: none;
