@@ -404,6 +404,7 @@ main {
 #moviePageIntInfo {
     position: absolute;
     display: block;
+    right: 0%;
     left: 0;
     left: 5%;
     height: 100%;
@@ -421,7 +422,7 @@ main {
     width: 70%;
 }
 
-#moviePageDes {
+#moviePageDesc {
     width: 90%;
 }
 
@@ -508,6 +509,16 @@ main {
     #billboardInfo {
         width: 56%;
     }
+    #moviePageIntInfo {
+        width: 75%;
+        background: linear-gradient(90deg, rgba(20,20,20,1) 60%, 
+        rgba(20,20,20,0.9363095580028886) 65%, 
+        rgba(20,20,20,0.4489146000196954) 80%, 
+        rgb(20 20 20 / 0%) 100%);
+    }
+    #moviePageInt {
+        background-size: 70%;
+    }
 }
 
 @media only screen and (max-width: 992px) {
@@ -522,6 +533,9 @@ main {
     }
     .movie {
         min-width: 25%;
+    }
+    #moviePageInt {
+        background-size: 80%;
     }
 }
 
@@ -557,6 +571,30 @@ main {
         padding-right: 10px;
         padding-bottom: 3px;
         padding-top: 3px;
+    }
+    #moviePageIntInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        left: 0%;
+        width: 100%;
+        padding-left: 5%;
+        z-index: 10;
+        background: linear-gradient(1deg, rgba(20,20,20,1) 10%, 
+        rgba(20,20,20,0.9363095580028886) 20%, 
+        rgba(20,20,20,0.7598389697675946) 30%, 
+        rgba(20,20,20,0.4489146000196954) 40%, 
+        rgba(20,20,20,0) 50%);
+    }
+    #moviePageTitle {
+        width: 90%;
+        font-size: 1.5rem;
+    }
+    #moviePageDesc {
+        font-size: 0.8rem;
+    }
+    #moviePageInt {
+        background-size: 100%;
     }
 }
 
