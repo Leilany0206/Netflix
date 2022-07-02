@@ -357,7 +357,7 @@ main {
     left: 0%;
     width: 100vw;
     background-color: #14141436;
-    z-index: 10;
+    z-index: 1000;
 }
 
 #moviePageGrid > .gradientUp {
@@ -369,8 +369,6 @@ main {
 
 #moviePageGrid > .gradientDown {
     grid-area: gradientDownMP;
-    display: flex;
-    flex-direction: column-reverse;
 }
 
 #moviePageGrid {  
@@ -467,12 +465,27 @@ main {
     z-index: 10;
 }
 
-#actorPage > .gradientDown {
-    height: 15%;
+#actorPageGrid {  
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 25% 1fr 25%;
+    grid-auto-flow: row dense;
+    grid-template-areas:
+      "gradientUpAP"
+      "actorPageInt"
+      "gradientDownAP";
 }
 
-#actorPage > .gradientUp {
-    height: 15%;
+#actorPageGrid > .gradientUp {
+    grid-area: gradientUpAP;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-left: 5%;
+}
+
+#actorPageGrid > .gradientDown {
+    grid-area: gradientDownAP;
 }
 
 .castMember:hover {
@@ -480,17 +493,10 @@ main {
 }
 
 #actorPageInt {
-    display: block;
-    position: absolute;
-    top: 15%;
-    bottom: 15%;
-    right: 0%;
-    left: 0%;
+    display: flex;
+    align-items: center;
     background-color: #141414;
-}
-
-#actorPageInt > .close {
-    margin-left: 5%;
+    grid-area: actorPageInt;
 }
 
 /* #apmContainer {
@@ -500,6 +506,8 @@ main {
 #actorPageMovies {
     display: flex;
     padding: 2rem;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .movieActor {
@@ -626,6 +634,18 @@ main {
     .close {
         height: 25%;
     }
+    #actorPageMovies {
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        padding-top: 0%;
+        padding-bottom: 0%;
+    }
+    #actorPageGrid {
+        grid-template-rows: 20% 1fr 20%;
+    }
+    .movieActor {
+        width: 27%;
+    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -652,11 +672,6 @@ main {
     } 
     #moviePageGrid {  
         grid-template-rows: 15% 1fr 15%;
-        grid-auto-flow: row dense;
-        grid-template-areas:
-          "gradientUpMP"
-          "moviePageInt"
-          "gradientDownMP";
     }
     #moviePageIntInfo {
         height: 70%;
@@ -675,6 +690,9 @@ main {
     }
     .close {
         height: 35%;
+    }
+    .movieActor {
+        width: 27%;
     }
 }
 

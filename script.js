@@ -36,7 +36,7 @@ function mediaLogo(x) {
   }
 }
 
-var x = window.matchMedia("(max-width: 576px)")
+let x = window.matchMedia("(max-width: 576px)")
 mediaLogo(x) 
 x.addListener(mediaLogo);
 
@@ -107,11 +107,17 @@ function actor(id) {
       console.log(aux.length)
 
       if (response.status === 200) {
-        for (let i = 0; i < 5 && i < aux.length; i++) {
+        let auxMax = 5;
+
+        // if (x.matches) {
+        //   auxMax = 6
+        // } else {auxMax = 5}
+
+        for (let i = 0; i < auxMax && i < aux.length && i < 10; i++) {
           if(aux[i].poster_path !== null) {
           auxMovie += `<div class="movieActor" id=${aux[i].id} onclick="showMovie(${aux[i].id})"><img src="https://image.tmdb.org/t/p/w500${aux[i].poster_path}" class="posterActor" alt=""></div>`;
           actorPageMovies.innerHTML = auxMovie;
-          }
+          } else {auxMax += 1}
         }
       }
     } catch (error) {
