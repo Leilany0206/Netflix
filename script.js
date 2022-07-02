@@ -93,7 +93,8 @@ function closeWindow(box) {
 
 // EVENT ACTOR MOVIES
 function actor(id) {
-  let actorMovies = `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=e2463b079580c4d4aed3af119a1e0c2e`;
+  // let actorMovies = `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=e2463b079580c4d4aed3af119a1e0c2e`;
+  let actorMovies = `https://api.themoviedb.org/3/discover/movie?api_key=e2463b079580c4d4aed3af119a1e0c2e&with_people=${id}&sort_by=popularity.desc`
   actorPage.style.visibility = "visible";
   moviePage.style.visibility = "hidden";
 
@@ -105,7 +106,8 @@ function actor(id) {
         },
       });
 
-      let aux = response.data.cast;
+      // let aux = response.data.cast;
+      let aux = response.data.results;
       let auxMovie = "";
       console.log(aux.length)
 
