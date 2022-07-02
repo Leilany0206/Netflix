@@ -52,7 +52,6 @@ function search() {
   let inputOriginal = searchInput.value
   let input = "&query=" + inputOriginal
   let searchLink = `https://api.themoviedb.org/3/search/movie?api_key=af1b76109560756a2450b61eff16e738${input}`
-  searchPage.style.visibility = "visible";
 
   const searchMovie = async () => {
     try {
@@ -68,11 +67,15 @@ function search() {
 
       if (response.status === 200) {
         if (aux.length === 0) {
+          searchPage.style.visibility = "visible";
           auxMessage += `<h2>Lo sentimos, parece que "${inputOriginal}" no forma parte del catálogo en este momento</h2>`
           searchPageText.innerHTML = auxMessage;
         } else {
-          auxMessage += `<h2>"${inputOriginal}" forma parte del catálogo en este momento :)</h2>`
-          searchPageText.innerHTML = auxMessage;
+          searchPage.style.visibility = "hidden";
+          // auxMessage += `<h2>"${inputOriginal}" forma parte del catálogo en este momento :)</h2>`
+          // searchPageText.innerHTML = auxMessage;
+
+          showMovie(`${aux[0].id}`)
         }
       }
     } catch (error) {
@@ -109,9 +112,9 @@ function actor(id) {
       if (response.status === 200) {
         let auxMax = 5;
 
-        // if (x.matches) {
-        //   auxMax = 6
-        // } else {auxMax = 5}
+        if (x.matches) {
+          auxMax = 6
+        } else {auxMax = 5}
 
         for (let i = 0; i < auxMax && i < aux.length && i < 10; i++) {
           if(aux[i].poster_path !== null) {

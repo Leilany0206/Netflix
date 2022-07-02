@@ -2,6 +2,7 @@ body {
     margin: 0%;
     background-color: #141414;
     display: grid;
+    gap: 0% 0%;
     grid-template-columns: 1fr;
     grid-template-rows: 0.5fr 1fr;
     grid-auto-flow: row dense;
@@ -374,6 +375,7 @@ main {
 #moviePageGrid {  
     display: grid;
     height: 100%;
+    gap: 0% 0%;
     grid-template-columns: 1fr;
     grid-template-rows: 25% 1fr 25%;
     grid-auto-flow: row dense;
@@ -468,6 +470,7 @@ main {
 #actorPageGrid {  
     display: grid;
     height: 100%;
+    gap: 0% 0%;
     grid-template-columns: 1fr;
     grid-template-rows: 25% 1fr 25%;
     grid-auto-flow: row dense;
