@@ -45,6 +45,12 @@ function cut(str, number) {
   return str.split(" ").splice(0, number).join(" ");
 }
 
+function count(str) {
+  const arr = str.split(' ');
+
+  return arr.filter(word => word !== '').length;
+}
+
 // Search
 
 searchInput.addEventListener("keydown", function(event) {
@@ -170,7 +176,12 @@ function showMovie(id) {
         auxTitle += `${aux.title}`;
         moviePageTitle.innerHTML = auxTitle;
 
-        auxDesc += `${aux.overview}`;
+        if (count(`${aux.overview}`) > 90) {
+          auxDesc += cut(`${aux.overview}`, 90) + " ...";
+        } else {
+          auxDesc += `${aux.overview}`
+        }
+
         moviePageDesc.innerHTML = auxDesc;
 
         // auxImg += `<div id="moviePageImg">AHHHHHH</div>`;
