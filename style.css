@@ -597,6 +597,11 @@ main {
     #billboardDesc {
         font-size: 0.9rem;
     } 
+    #billboardInfo {
+        width: 95%;
+        bottom: 5%;
+        z-index: 10;
+    }
     #billboardTitle {
         font-size: 2rem;
     }

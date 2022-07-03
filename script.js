@@ -258,8 +258,14 @@ const setBillboard = async () => {
       auxTitle += `${aux[0].title}`;
       billboardTitle.innerHTML = auxTitle;
 
-      auxDesc += `${aux[0].overview}`;
+      if (count(`${aux[0].overview}`) > 90) {
+        auxDesc += cut(`${aux[0].overview}`, 90) + " ...";
+      } else {
+        auxDesc += `${aux[0].overview}`;
+      }
+
       billboardDesc.innerHTML = auxDesc;
+
     }
   } catch (error) {
     console.log(error);
