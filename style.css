@@ -132,11 +132,12 @@ i {
 
 #navbaritems { 
     position: fixed;
-    top: 0;
+    top: 0px;
+    right: 0px;
+    left: 0px;
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    width: 100vw;
     background-color: #141414;
     height: 68px;
     z-index: 800;
@@ -204,23 +205,41 @@ i {
     z-index: 10;
 }
 
+#searchPageGrid {
+    display: grid;
+    height: 100%;
+    gap: 0% 0%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 35% 1fr 35%;
+    grid-auto-flow: row dense;
+    grid-template-areas:
+      "gradientUpSP"
+      "searchPageBackground"
+      "gradientDownSP";
+}
+
+#searchPageGrid > .gradientUp {
+    grid-area: gradientUpSP;
+}
+
+#searchPageGrid > .gradientDown {
+    grid-area: gradientDownSP;
+}
+
 #searchPageBackground {
     background-color: #141414;
-    position: absolute;
-    top: 25%;
-    bottom: 25%;
-    right: 0%;
-    left: 0%;
     display: block;
+    grid-area: searchPageBackground;
 }
 
 #searchPageInt {
     position: absolute;
-    top: 25%;
-    bottom: 25%;
-    right: 0%;
-    left: 0%;
     display: block;
+    right: 0%;
+    left: 0;
+    height: 30%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 #searchPageInt > .close {
@@ -239,6 +258,7 @@ i {
     color: antiquewhite;
     font-size: 2rem;
     text-align: center;
+    margin-left: 0%;
 }
 
 /*BILLBOARD*/
@@ -649,6 +669,12 @@ main {
     .movieActor {
         width: 27%;
     }
+    #searchPageInt > .close {
+        height: 30%;
+    }
+    #searchPageText > h2 {
+        font-size: 1.7rem;
+    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -697,6 +723,10 @@ main {
     .movieActor {
         width: 27%;
     }
+    #searchPageInt > .close {
+        height: 25%;
+    }
+    #searchPageText > h2 {
+        font-size: 1.4rem;
+    }
 }
-
-/* NO SUPE QUE PASO PERO EL CAROUSEL DE ACTORPAGE CAMBIO DE TAMAÑO */

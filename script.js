@@ -27,7 +27,7 @@ let animationBox = document.getElementById("animation");
 let historyBox = document.getElementById("history");
 let musicBox = document.getElementById("music");
 
-// NETFLIX ICON MEDIA QUERIES
+// NETFLIX ICON AND MEDIA QUERIES
 function mediaLogo(x) {
   if (x.matches) { 
     changeLogo.src = "https://www.edigitalagency.com.au/wp-content/uploads/Netflix-N-Symbol-logo-red-transparent-RGB-png.png";
@@ -39,6 +39,11 @@ function mediaLogo(x) {
 let x = window.matchMedia("(max-width: 576px)")
 mediaLogo(x) 
 x.addListener(mediaLogo);
+
+// CUT DESCRIPTION 
+function cut(str, number) {
+  return str.split(" ").splice(0, number).join(" ");
+}
 
 // Search
 
